@@ -1,0 +1,32 @@
+#!/bin/bash
+
+### BEGIN INIT INFO
+# Provides:          directv
+# Required-Start:    $local_fs
+# Required-Stop:     $local_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start directv node.js at boot time
+# Description:       Allows communication with DirecTV box using node.js
+### END INIT INFO
+
+FOREVER="/opt/node/bin/forever"
+DIRECTV_PATH="/home/pi/directv"
+DIRECTV_JS="$DIRECTV_PATH/directv.js"
+DIRECTV_OPTIONS="mel.homedns.org 12000 8124"
+
+case "$1" in
+    start)
+        su - pi -c "$FOREVER start -a -l $DIRECTV_PATH/forever.log -o $DIRECTV_PATH/info.log -e $DIRECTV_PATH/err.log  --minUptime 1000 --spinSleepTime 1000 $DIRECTV_JS $DIRECTV_OPTIONS"
+        ;;
+    stop)
+        su - pi -c "$FOREVER stopall"
+        ;;
+    restart)
+        su - pi -c "$FOREVER restartall"
+        ;;
+    status)
+        su - pi -c "$FOREVER list"
+        ;;
+esac
+exit 0
