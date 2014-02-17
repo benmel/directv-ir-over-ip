@@ -1,3 +1,7 @@
+This is an application for the Raspberry Pi that captures a DirecTV remote's IR signal's 
+and controls a DirecTV receiver over the internet. A Raspberry Pi with an IR receiver is needed.
+The application uses LIRC and Node.js and requires some networking changes.
+
 Configure networking:  
 1. Set static IP of 192.168.1.200 on DirecTV receiver  
 2. On router forward port 12000 to 192.168.1.200:8080  
@@ -62,7 +66,7 @@ Install node js:
 
 Configure directv.js:  
 1. Create /home/pi/directv and copy directv.js to this directory  
-2. Copy init.d script to /etc/init.d/  
+2. Copy directv.init to /etc/init.d/  
 3. sudo chmod +x /etc/init.d/directv  
 4. sudo update-rc.d directv defaults  
 5. Add to /home/pi/.profile:  
