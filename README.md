@@ -1,21 +1,19 @@
 Configure networking:
-1.	Set static IP of 192.168.1.200 on DirecTV receiver
-2.	On router forward port 12000 to 192.168.1.200:8080
-3.	/etc/network/interfaces:
-auto lo
-
-iface lo inet loopback
-iface eth0 inet static
-address 192.168.1.110
-netmask 255.255.255.0
-gateway 192.168.1.1
-
-allow-hotplug wlan0
-iface wlan0 inet manual
-wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
-iface default inet dhcp
-4.	sudo /etc/init.d/networking restart
-5.	Power cycle
+1. Set static IP of 192.168.1.200 on DirecTV receiver
+2. On router forward port 12000 to 192.168.1.200:8080
+3. /etc/network/interfaces:
+    auto lo
+    iface lo inet loopback
+    iface eth0 inet static
+    address 192.168.1.110
+    netmask 255.255.255.0
+    gateway 192.168.1.1
+    allow-hotplug wlan0
+    iface wlan0 inet manual
+    wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
+    iface default inet dhcp
+4. sudo /etc/init.d/networking restart
+5. Power cycle
 
 Install netcat:
 1.	sudo apt-get install netcat
