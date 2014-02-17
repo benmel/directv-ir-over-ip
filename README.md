@@ -1,4 +1,5 @@
 Configure networking:
+<<<<<<< HEAD
 1. Set static IP of 192.168.1.200 on DirecTV receiver
 2. On router forward port 12000 to 192.168.1.200:8080
 3. /etc/network/interfaces:
@@ -14,9 +15,28 @@ Configure networking:
     iface default inet dhcp
 4. sudo /etc/init.d/networking restart
 5. Power cycle
+=======
+<br>
+  1. Set static IP of 192.168.1.200 on DirecTV receiver
+  2. On router forward port 12000 to 192.168.1.200:8080
+  3. /etc/network/interfaces:<br>
+    	auto lo
+      iface lo inet loopback
+      iface eth0 inet static
+      address 192.168.1.110
+      netmask 255.255.255.0
+      gateway 192.168.1.1
+
+      allow-hotplug wlan0
+      iface wlan0 inet manual
+      wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
+      iface default inet dhcp
+  4. sudo /etc/init.d/networking restart
+  5. Power cycle
+>>>>>>> d8b239ce49237c243326e9da48b471cc98695eb4
 
 Install netcat:
-1.	sudo apt-get install netcat
+  1. sudo apt-get install netcat
 
 Configure lirc:
 1.	sudo apt-get install lirc
@@ -25,25 +45,25 @@ snd-bcm2835
 lirc_dev
 lirc_rpi gpio_in_pin=18
 3.	/etc/lirc/hardware.conf:
-# Arguments which will be used when launching lircd
+\# Arguments which will be used when launching lircd
 LIRCD_ARGS="--uinput"
 
-#Don't start lircmd even if there seems to be a good config file
-#START_LIRCMD=false
+\#Don't start lircmd even if there seems to be a good config file
+\#START_LIRCMD=false
 
-#Don't start irexec, even if a good config file seems to exist.
-#START_IREXEC=false
+\#Don't start irexec, even if a good config file seems to exist.
+\#START_IREXEC=false
 
-#Try to load appropriate kernel modules
+\#Try to load appropriate kernel modules
 LOAD_MODULES=true
 
-# Run "lircd --driver=help" for a list of supported drivers.
+\# Run "lircd --driver=help" for a list of supported drivers.
 DRIVER="default"
-# usually /dev/lirc0 is the correct setting for systems using udev
+\# usually /dev/lirc0 is the correct setting for systems using udev
 DEVICE="/dev/lirc0"
 MODULES="lirc_rpi"
 
-# Default configuration files for your hardware if any
+\# Default configuration files for your hardware if any
 LIRCD_CONF=""
 LIRCMD_CONF=""
 4.	sudo /etc/init.d/lirc stop
