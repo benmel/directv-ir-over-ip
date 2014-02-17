@@ -1,6 +1,6 @@
-This is an application for the Raspberry Pi that captures a DirecTV remote's IR signal's 
+This is an application for the Raspberry Pi that captures a DirecTV remote's IR signals 
 and controls a DirecTV receiver over the internet. A Raspberry Pi with an IR receiver is needed.
-The application uses LIRC and Node.js and requires some networking changes.
+The application uses netcat, LIRC and Node.js and requires some networking changes.
 
 Configure networking:  
 1. Set static IP of 192.168.1.200 on DirecTV receiver  
